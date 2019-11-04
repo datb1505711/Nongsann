@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "678064226878",
+    "firebase_url": "https://myapp-432e5.firebaseio.com",
+    "project_id": "myapp-432e5",
+    "storage_bucket": "myapp-432e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678064226878:android:6079e9a2143251f9df076f",
+        "android_client_info": {
+          "package_name": "com.example.nongsan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678064226878-05a6o7sk47olklids1c0mgvu17fr0b1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw0jG8ZU2FVauS9LqQREQPjoVtOuBy-hA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678064226878-05a6o7sk47olklids1c0mgvu17fr0b1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
