@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DangNhap">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ViewFlipper
+                android:id="@+id/viewflipper"
+                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                >
+                <ImageView
+                   android:src="@drawable/login"
+                    android:id="@+id/imagedangnhap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </ViewFlipper>
+            <LinearLayout
+                android:background="#5992d2"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="15dp"
+                    android:textSize="20dp"
+                    android:id="@+id/txtemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:hint="Nhập Email"
+                    />
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="15dp"
+                    android:textSize="20dp"
+                    android:id="@+id/txtmatkhau"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mat Khau"
+                    android:hint="Nhập Mật Khẩu"
+                    />
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:padding="2dp"
+                    android:text="Quên Tài Khoản"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
