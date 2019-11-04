@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/home"
+        android:id="@+id/menutrangchu"
+        android:title="Trang Chủ" />
+    <item
+        android:icon="@drawable/asta"
+        android:title="Bài Bán"
+        android:id="@+id/menubaiban"
+        />
+    <item
+        android:icon="@drawable/asta"
+        android:title="Bài Mua"
+        android:id="@+id/menubaimua"
+    />
+    <item
+        android:icon="@drawable/user"
+        android:title="Tài Khoản"
+        android:id="@+id/menutaikhoan"
+        />
+    <item
+        android:icon="@drawable/logout"
+        android:title="Đăng Xuất"
+        android:id="@+id/menudangxuat"
+        />
+</menu>
