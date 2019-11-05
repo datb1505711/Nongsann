@@ -7,6 +7,15 @@ public class User {
     private String sdt;
     private String diaChi;
     private String accountType;
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public String getHoTen() {
         return hoTen;
@@ -56,12 +65,13 @@ public class User {
         this.accountType = accountType;
     }
 
-    public User(String hoTen, String email, String password, String sdt, String diaChi, String accountType) {
+    public User(String hoTen, String email, String password, String sdt, String diaChi, String accountType, String imageUrl) {
         this.hoTen = hoTen;
         this.email = email;
         this.password = password;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.accountType = accountType;
+        this.imageUrl = imageUrl;
     }
 }
