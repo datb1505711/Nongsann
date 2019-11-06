@@ -57,8 +57,8 @@ public class DangNhapActivity extends AppCompatActivity {
                             for(User user: users) {
                                 if(edtUsername.getText().toString().equals(user.getUsername())
                                         && edtPassword.getText().toString().equals(user.getPassword())) {
-                                    Intent intent = new Intent(DangNhap.this, BaiDang.class);
-                                    DangNhap.this.startActivity(intent);
+                                    Intent intent = new Intent(DangNhapActivity.this, BaiDangActivity.class);
+                                    DangNhapActivity.this.startActivity(intent);
                                 }
                                 else
                                 {
