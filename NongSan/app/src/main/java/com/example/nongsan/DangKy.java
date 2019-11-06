@@ -32,7 +32,7 @@ import io.opencensus.tags.Tag;
 
 public class DangKy extends AppCompatActivity {
     private Button btnAcceptRegister;
-    private EditText edtHoten,edtEmail,edtSdt,edtPassword,edtDiaChi;
+    private EditText edtHoten,edtUsername,edtSdt,edtPassword,edtDiaChi;
     private RadioButton radNguoiBan,radNguoiMua;
     private ImageView imgAvatar;
     private String accountType;
@@ -148,7 +148,7 @@ public class DangKy extends AppCompatActivity {
 
     private void register() {
         final User user = new User(
-                edtHoten.getText().toString(),edtEmail.getText().toString(),
+                edtHoten.getText().toString(),edtUsername.getText().toString(),
                 edtPassword.getText().toString(),edtSdt.getText().toString(),
                 edtDiaChi.getText().toString(),accountType,avatarPath);
 
@@ -162,7 +162,7 @@ public class DangKy extends AppCompatActivity {
             accountType = "Nguoi Ban";
             btnAcceptRegister = findViewById(R.id.btnAcceptRegister);
             edtHoten = findViewById(R.id.edtHoTen);
-            edtEmail  =findViewById(R.id.edtEmail);
+            edtUsername  =findViewById(R.id.edtUsername);
             edtPassword = findViewById(R.id.edtPassword);
             edtSdt = findViewById(R.id.edtSoDienThoai);
             edtDiaChi = findViewById(R.id.edtDiaChi);
