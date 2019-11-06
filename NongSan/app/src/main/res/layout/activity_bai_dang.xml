@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BaiDang">
+    tools:context=".BaiDangActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarbaidang"
         app:title="Bài Đăng"
@@ -18,6 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -29,45 +33,48 @@
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 >
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:layout_gravity="center"
-                    android:layout_height="80dp"
-                    android:layout_width="80dp"
-                    android:src="@drawable/anhbd"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
                     android:id="@+id/imagebaidang"
                     >
-                </de.hdodenhof.circleimageview.CircleImageView>
+                </ImageView>
             </ViewFlipper>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
-                <TextView
-                    android:layout_marginTop="20dp"
+                <EditText
+                    android:textColorHint="#2196F3"
+                    android:background="@drawable/cssinput"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:padding="15dp"
-                    android:textSize="20dp"
-                    android:id="@+id/txttenbaidang"
+                    android:padding="10dp"
+                    android:textSize="17dp"
+                    android:id="@+id/edtBaidang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ten Bai Dang"
-                    android:hint="Nhập Tên Bài Viết"
+                    android:hint="Tên Bài Đăng"
                     />
-                <TextView
-                    android:layout_marginTop="10dp"
+                <EditText
+                    android:textColorHint="#2196F3"
+                    android:background="@drawable/cssinput"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:padding="15dp"
-                    android:textSize="20dp"
-                    android:id="@+id/txtgia"
+                    android:padding="10dp"
+                    android:textSize="17dp"
+                    android:id="@+id/edtGia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Giá"
-                    android:hint="Nhập giá"
+                    android:hint="Giá Sản Phẩm"
                     />
                 <LinearLayout
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:weightSum="10"
                     android:orientation="horizontal"
@@ -78,27 +85,36 @@
                         android:layout_weight="5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtloai"
+                        android:id="@+id/SpLoai"
                         />
                     <Spinner
                         android:layout_weight="5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtdonvitinh"
+                        android:id="@+id/SpDonvitinh"
                         />
                 </LinearLayout>
                 <EditText
-                    android:text="Nội dung bài viết"
-                    android:layout_marginTop="10dp"
-                    android:lines="7"
-                    android:id="@+id/txtnoidung"
-                    android:layout_height="wrap_content"
+                    android:lines="5"
+                    android:textColorHint="#2196F3"
+                    android:background="@drawable/cssinput"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:textSize="17dp"
+                    android:id="@+id/edtNoidung"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nội Dung"
                     />
                 <Button
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button"
                     android:textSize="20dp"
                     android:text="Đăng Bài"
                     android:padding="3dp"
@@ -108,6 +124,7 @@
                     />
             </LinearLayout>
         </LinearLayout>
+        </ScrollView>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
             android:layout_width="wrap_content"

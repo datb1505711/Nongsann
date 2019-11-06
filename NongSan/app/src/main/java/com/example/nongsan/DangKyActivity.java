@@ -30,7 +30,7 @@ import java.util.UUID;
 
 import io.opencensus.tags.Tag;
 
-public class DangKy extends AppCompatActivity {
+public class DangKyActivity extends AppCompatActivity {
     private Button btnAcceptRegister;
     private EditText edtHoten,edtEmail,edtSdt,edtPassword,edtDiaChi;
     private RadioButton radNguoiBan,radNguoiMua;
@@ -53,7 +53,6 @@ public class DangKy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
         addControls();
-
         validateRadioGroup();
         imgAvatarOnclick();
         btnRegisterOnclick();
