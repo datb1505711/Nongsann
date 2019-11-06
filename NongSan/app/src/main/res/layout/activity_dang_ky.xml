@@ -76,10 +76,10 @@
                     android:layout_marginLeft="10dp"
                     android:padding="10dp"
                     android:textSize="17dp"
-                    android:id="@+id/edtEmail"
+                    android:id="@+id/edtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập Email"
+                    android:hint="Nhập tài khoản"
                     />
                 <EditText
                     android:textColorHint="#2196F3"
@@ -89,6 +89,7 @@
                     android:layout_marginLeft="10dp"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:inputType="textPassword"
                     android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
