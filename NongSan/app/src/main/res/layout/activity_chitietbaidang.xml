@@ -18,6 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -31,10 +35,6 @@
                 >
 
             </ImageView>
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
             <LinearLayout
                 android:weightSum="10"
                 android:orientation="horizontal"
@@ -110,8 +110,8 @@
                     android:layout_width="match_parent"
                     />
             </LinearLayout>
-        </ScrollView>
         </LinearLayout>
+        </ScrollView>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
             android:layout_width="wrap_content"

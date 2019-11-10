@@ -109,12 +109,11 @@
                     android:hint="Nội Dung"
                     />
                 <Button
-                    android:background="@drawable/cssbutton"
+                    android:background="@drawable/cssbtn"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
-                    android:padding="15dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textColor="@android:color/white"
                     android:id="@+id/btndangbai"
                     android:text="Đăng Bài"

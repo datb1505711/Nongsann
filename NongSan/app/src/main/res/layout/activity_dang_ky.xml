@@ -154,8 +154,8 @@
                     </RadioGroup>
                 </LinearLayout>
                 <Button
-                    android:paddingRight="30dp"
-                    android:paddingLeft="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:textColor="@android:color/white"
                     android:background="@drawable/cssbutton"
                     android:id="@+id/btnAcceptRegister"
@@ -163,7 +163,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Đăng Ký "
                     android:textSize="20dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
             </LinearLayout>
