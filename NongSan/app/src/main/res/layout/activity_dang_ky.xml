@@ -154,10 +154,10 @@
                     </RadioGroup>
                 </LinearLayout>
                 <Button
-                    android:paddingRight="40dp"
-                    android:paddingLeft="40dp"
+                    android:paddingRight="30dp"
+                    android:paddingLeft="30dp"
                     android:textColor="@android:color/white"
-                    android:background="@drawable/button"
+                    android:background="@drawable/cssbutton"
                     android:id="@+id/btnAcceptRegister"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"

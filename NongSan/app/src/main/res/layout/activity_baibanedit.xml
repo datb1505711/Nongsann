@@ -18,4 +18,11 @@
         android:layout_height="match_parent"
         >
     </ListView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/bottomnavigation"
+        android:layout_width="match_parent"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </LinearLayout>

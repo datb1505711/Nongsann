@@ -24,12 +24,17 @@
             android:layout_height="match_parent"
             >
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/background"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 >
 
             </ImageView>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
             <LinearLayout
                 android:weightSum="10"
                 android:orientation="horizontal"
@@ -105,6 +110,7 @@
                     android:layout_width="match_parent"
                     />
             </LinearLayout>
+        </ScrollView>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
@@ -115,4 +121,11 @@
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/bottomnavigation"
+        android:layout_width="match_parent"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </LinearLayout>

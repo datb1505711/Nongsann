@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/bthome"
+        android:title="Trang Chủ" />
+    <item
+        android:icon="@drawable/btedit"
+        android:title="Bài Bán"
+        />
+    <item
+        android:icon="@drawable/btrun"
+        android:title="Bài Mua"
+        />
+    <item
+        android:icon="@drawable/btmessg"
+        android:title="Tài Khoản"
+
+        />
+    <item
+        android:icon="@drawable/btpw"
+        android:title="Đăng Xuất"
+        />
+</menu>
