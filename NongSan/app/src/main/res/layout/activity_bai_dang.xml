@@ -53,6 +53,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:padding="10dp"
+                    android:maxLines="1"
                     android:textSize="17dp"
                     android:id="@+id/edtBaidang"
                     android:layout_width="match_parent"
@@ -66,7 +67,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:padding="10dp"
+                    android:inputType="number"
                     android:textSize="17dp"
+                    android:maxLines="1"
                     android:id="@+id/edtGia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,8 +98,9 @@
                         />
                 </LinearLayout>
                 <EditText
-                    android:lines="5"
                     android:textColorHint="#2196F3"
+                    android:maxLines="3"
+                    android:inputType="textMultiLine"
                     android:background="@drawable/cssinput"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
@@ -113,6 +117,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="30dp"
                     android:textSize="17dp"
                     android:textColor="@android:color/white"
                     android:id="@+id/btndangbai"

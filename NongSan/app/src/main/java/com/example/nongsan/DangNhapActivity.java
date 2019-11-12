@@ -3,7 +3,9 @@ package com.example.nongsan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText edtUsername,edtPassword;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+    SharedPreference sharedPreference = new SharedPreference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,12 @@ public class DangNhapActivity extends AppCompatActivity {
                                         && edtPassword.getText().toString().equals(user.getPassword())) {
                                     Intent intent = new Intent(DangNhapActivity.this, BaiDangActivity.class);
                                     DangNhapActivity.this.startActivity(intent);
+                                    sharedPreference.write("username", user.getUsername());
+                                    sharedPreference.write("password", user.getPassword());
                                 }
                                 else
                                 {
                                     Log.d("login", "login failed");
-
                                 }
                             }
                         }
@@ -73,6 +77,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        sharedPreference.init(getApplicationContext());
         btnLogin = findViewById(R.id.btnAcceptLogin);
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);

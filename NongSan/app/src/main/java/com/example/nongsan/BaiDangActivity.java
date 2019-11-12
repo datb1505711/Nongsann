@@ -3,7 +3,16 @@ package com.example.nongsan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,77 +21,223 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class BaiDangActivity extends AppCompatActivity {
-    private String donvitinh,loai;
+    private AsyncTask<?,?,?> asyncTask;
     private Button btndangbai;
     private ImageView ImageBaiDang;
     private EditText txtten,txtgia,txtnoidung;
-    private List<String> listloai = new ArrayList<String>();
-    private List<String> listdonvi = new ArrayList<String>();
+    private List<String> listDonViTinh ;
+    private List<String> listDanhMuc ;
+    private Uri imagePath;
+    private int max;
+    private String imageURL;
     private Spinner sploai,spdonvitinh;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageRef = firebaseStorage.getReference();
+
+    SharedPreference sharedPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai_dang);
         AddControl();
-        Loaddata();
-        Adddata();
+        LoadData();
+        imgAvatarOnclick();
         ButtonClick();
+    }
+
+    private List<DanhMuc> sort(List<DanhMuc> danhMuc) {
+        for(int i = 0; i<danhMuc.size();i++) {
+            for(int j =0;j<i+1;j++) {
+                if(danhMuc.get(i).id<danhMuc.get(j).id)
+                {
+                    DanhMuc temp = danhMuc.get(i);
+                    danhMuc.set(i,danhMuc.get(j));
+                    danhMuc.set(j,temp);
+                }
+            }
+        }
+        return danhMuc;
+    }
+
+        private void  getMaxId() {
+            max = 0;
+           firebaseFirestore.collection("BaiDang").get().addOnCompleteListener(
+                    new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
+
+                                for (DocumentSnapshot snapshot : documentSnapshots) {
+                                    BaiDang baidang = snapshot.toObject(BaiDang.class);
+                                    if (baidang.getId() > max) max = baidang.getId();
+                                }
+                                max = max+1;
+                                taoBaiDang();
+
+
+                            }
+
+
+                        }
+                    }
+            );
+    }
+
+    private void imgAvatarOnclick() {
+        ImageBaiDang.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent pickingImage = new Intent(Intent.ACTION_PICK);
+                        pickingImage.setType("image/*");
+                        startActivityForResult(pickingImage,111);
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected  void onActivityResult(int requestCode, int resultCode,Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+
+        if(requestCode == 111 && resultCode==RESULT_OK && data!=null) {
+            try {
+                imagePath = data.getData();
+                final Uri imageUri = data.getData();
+                final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                ImageBaiDang.setImageBitmap(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void ButtonClick() {
         btndangbai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Product_Type>  data = new ArrayList<Product_Type>(20);
-                data.add(new Product_Type(1,"Rau, Củ, Qủa"));
-                data.add(new Product_Type(2,"Tiêu, Hành, Tỏi"));
-                data.add(new Product_Type(3,"Trái Cây"));
-                data.add(new Product_Type(4,"Lúa"));
-                data.add(new Product_Type(5,"Tôm, Cá"));
-                data.add(new Product_Type(6,"Khác"));
-                firebaseFirestore.collection("Product_Type")
-                        .document().set(data);
+                uploadImage();
+
             }
         });
     }
 
-    private void Adddata() {
+    public synchronized void uploadImage(){
+        final StorageReference imagesRef = storageRef.child("BaiDang/" + UUID.randomUUID().toString());
+        imagesRef.putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                Task<Uri> taskUri = task.getResult().getMetadata().getReference().getDownloadUrl();
+
+                taskUri.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        imageURL = uri.toString();
+                        getMaxId();
+                    }
+                });
+            }
+        });
 
     }
 
-    private void Loaddata() {
-        spdonvitinh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                donvitinh = spdonvitinh.getSelectedItem().toString();
-            }
+    private void taoBaiDang() {
+        BaiDang baiDang = new BaiDang(
+                max,
+                txtten.getText().toString(),
+                txtnoidung.getText().toString(),
+                new Date(),
+                imageURL,
+                sharedPreference.read("username",null),
+                sploai.getSelectedItem().toString(),
+                spdonvitinh.getSelectedItem().toString(),
+                txtgia.getText().toString());
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        firebaseFirestore.collection("BaiDang").document().set(baiDang).addOnCompleteListener(
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Log.d("create", "create success");
+                        }
+                        else {
+                            Log.d("create", "create fail");
+                        }
+                    }
+                }
+        );
+    }
+    private void LoadData() {
+        firebaseFirestore.collection("DanhMuc").get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        listDanhMuc = new ArrayList<>();
 
-            }
-        });
-        sploai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                loai = sploai.getSelectedItem().toString();
-                //  Log.e("aaa",spintinhthanh.getSelectedItem().toString());
-            }
+                        // tao list danh muc ne`
+                        List<DanhMuc> danhMucs = new ArrayList<>();
+                       if(task.isSuccessful()) {
+                           List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
+                           // lay du lieu tu firebase ve
+                           for(DocumentSnapshot snapshot: documentSnapshots) {
+                               DanhMuc danhmuc = snapshot.toObject(DanhMuc.class);
+                               danhMucs.add(danhmuc);
+                           }
+                           // sap xep lai list danh muc theo id tang dan`.
+                           danhMucs = sort(danhMucs);
+                           for(DanhMuc dm: danhMucs) {
+                                listDanhMuc.add(dm.description);
+                           }
+                           // set data cho spiner
+                           ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,listDanhMuc);
+                           sploai.setAdapter(adapter);
+                       }
+                    }
+                }
+        );
 
+        firebaseFirestore.collection("DonViTinh").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                List<DanhMuc> listTemp = new ArrayList<>();
+                listDonViTinh = new ArrayList<>();
+                if(task.isSuccessful()) {
+                    List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
 
+                    for(DocumentSnapshot snapshot: documentSnapshots) {
+                        DanhMuc danhmuc = snapshot.toObject(DanhMuc.class) ;
+                        listTemp.add(danhmuc);
+                    }
+                    listTemp = sort(listTemp);
+                    for(DanhMuc dm: listTemp) {
+                        listDonViTinh.add(dm.description);
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,listDonViTinh);
+                    spdonvitinh.setAdapter(adapter);
+                }
             }
         });
     }
