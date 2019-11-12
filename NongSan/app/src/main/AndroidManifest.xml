@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Chitietbaidang"></activity>
-        <activity android:name=".Baibanedit" />
-        <activity android:name=".Baimua" />
-        <activity android:name=".Baiban" />
-        <activity android:name=".BaiDang" />
-        <activity android:name=".TrangChu" />
-        <activity android:name=".DangKy" />
-        <activity android:name=".DangNhap" />
+        <activity android:name=".EditDetailActivity"></activity>
+        <activity android:name=".ChitietbaidangActivity" />
+        <activity android:name=".BaibaneditActivity" />
+        <activity android:name=".BaimuaActivity" />
+        <activity android:name=".BaibanActivity" />
+        <activity android:name=".BaiDangActivity" />
+        <activity android:name=".TrangChuActivity" />
+        <activity android:name=".DangKyActivity" />
+        <activity android:name=".DangNhapActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

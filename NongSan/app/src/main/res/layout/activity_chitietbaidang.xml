@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Chitietbaidang">
+    tools:context=".ChitietbaidangActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:title="Chi tiết bài đăng"
@@ -18,12 +18,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
             <ImageView
+                android:scaleType="fitXY"
                 android:src="@drawable/background"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
@@ -106,6 +111,7 @@
                     />
             </LinearLayout>
         </LinearLayout>
+        </ScrollView>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
             android:layout_width="wrap_content"
@@ -115,4 +121,11 @@
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/bottomnavigation"
+        android:layout_width="match_parent"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </LinearLayout>

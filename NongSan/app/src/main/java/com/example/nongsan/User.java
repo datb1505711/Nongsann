@@ -1,12 +1,23 @@
 package com.example.nongsan;
 
+import java.util.Map;
+
 public class User {
     private String hoTen;
-    private String email;
+    private String username;
     private String password;
     private String sdt;
     private String diaChi;
     private String accountType;
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public String getHoTen() {
         return hoTen;
@@ -16,12 +27,12 @@ public class User {
         this.hoTen = hoTen;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     public String getPassword() {
@@ -56,12 +67,17 @@ public class User {
         this.accountType = accountType;
     }
 
-    public User(String hoTen, String email, String password, String sdt, String diaChi, String accountType) {
+    public User(String hoTen, String username, String password, String sdt, String diaChi, String accountType, String imageUrl) {
         this.hoTen = hoTen;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.accountType = accountType;
+        this.imageUrl = imageUrl;
     }
+
+    public User() {}
+
+
 }
