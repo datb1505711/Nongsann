@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     private Button btnLogin, btnRegister;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
 
         addControls();
 
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(SplashActivity.this, DangNhapActivity.class);
+                SplashActivity.this.startActivity(intent);
             }
         });
 
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BaiDangActivity.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(SplashActivity.this, BaiDangActivity.class);
+                SplashActivity.this.startActivity(intent);
             }
         });
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".BaiDangActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarbaidang"
@@ -13,8 +14,27 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         />
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerlayout"
+    <LinearLayout
+        android:background="@drawable/bglg"
+        android:layout_weight="6.5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:src="@drawable/image"
+            android:background="@drawable/cssinput"
+            android:layout_margin="20sp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/imagebaidang"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="3.5"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -22,32 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <ViewFlipper
-                android:background="@drawable/background"
-                android:id="@+id/viewflipper"
-                android:layout_height="200dp"
-                android:layout_width="match_parent"
-                >
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:id="@+id/imagebaidang"
-                    >
-                </ImageView>
-            </ViewFlipper>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
                 <EditText
-                    android:textColorHint="#2196F3"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
                     android:background="@drawable/cssinput"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
@@ -59,19 +61,38 @@
                     android:layout_height="wrap_content"
                     android:hint="Tên Bài Đăng"
                     />
-                <EditText
-                    android:textColorHint="#2196F3"
-                    android:background="@drawable/cssinput"
-                    android:layout_marginTop="15dp"
+                <LinearLayout
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:padding="10dp"
-                    android:textSize="17dp"
-                    android:id="@+id/edtGia"
+                    android:weightSum="10"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Giá Sản Phẩm"
-                    />
+                    >
+                    <EditText
+                        android:textColor="@android:color/black"
+                        android:layout_weight="5"
+                        android:textColorHint="@android:color/black"
+                        android:background="@drawable/cssinput"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:textSize="17dp"
+                        android:id="@+id/edtGia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Giá Sản Phẩm"
+                        />
+                    <Spinner
+                        android:textColor="@android:color/black"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:textSize="17dp"
+                        android:layout_weight="5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/SpDonvitinh"
+                        />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
@@ -81,22 +102,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
+                    <TextView
+                        android:padding="10sp"
+                        android:text="Loại sản phẩm"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:layout_weight="5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
                     <Spinner
+                        android:textColor="@android:color/black"
                         android:layout_weight="5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/SpLoai"
                         />
-                    <Spinner
-                        android:layout_weight="5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/SpDonvitinh"
-                        />
+
                 </LinearLayout>
                 <EditText
+                    android:textColor="@android:color/black"
                     android:lines="5"
-                    android:textColorHint="#2196F3"
+                    android:textColorHint="@android:color/black"
                     android:background="@drawable/cssinput"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
@@ -109,6 +136,7 @@
                     android:hint="Nội Dung"
                     />
                 <Button
+                    android:textAllCaps="false"
                     android:background="@drawable/cssbtn"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="30dp"
@@ -121,14 +149,153 @@
                     android:layout_height="wrap_content"
                     />
             </LinearLayout>
-        </LinearLayout>
         </ScrollView>
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            app:menu="@menu/bottomnavigation"
-            android:layout_width="match_parent"
-            >
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </LinearLayout>
 </LinearLayout>
+<!--<androidx.drawerlayout.widget.DrawerLayout-->
+<!--android:id="@+id/drawerlayout"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--    >-->
+<!--<ScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    >-->
+<!--    <LinearLayout-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        >-->
+<!--        <ViewFlipper-->
+<!--            android:id="@+id/viewflipper"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:background="@drawable/background"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                >-->
+<!--                <ImageView-->
+<!--                    android:layout_margin="20sp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:id="@+id/imagebaidang"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
+<!--        </ViewFlipper>-->
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            >-->
+<!--            <EditText-->
+<!--                android:textColorHint="#2196F3"-->
+<!--                android:background="@drawable/cssinput"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:padding="10dp"-->
+<!--                android:textSize="17dp"-->
+<!--                android:id="@+id/edtBaidang"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Tên Bài Đăng"-->
+<!--                />-->
+<!--            <LinearLayout-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:weightSum="10"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                >-->
+<!--                <EditText-->
+<!--                    android:layout_weight="5"-->
+<!--                    android:textColorHint="#2196F3"-->
+<!--                    android:background="@drawable/cssinput"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textSize="17dp"-->
+<!--                    android:id="@+id/edtGia"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Giá Sản Phẩm"-->
+<!--                    />-->
+<!--                <Spinner-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:textSize="17dp"-->
+<!--                    android:layout_weight="5"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/SpDonvitinh"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:weightSum="10"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                >-->
+<!--                <TextView-->
+<!--                    android:padding="10sp"-->
+<!--                    android:text="Loại sản phẩm"-->
+<!--                    android:textColor="#2196F3"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:layout_weight="5"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    />-->
+<!--                <Spinner-->
+<!--                    android:layout_weight="5"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/SpLoai"-->
+<!--                    />-->
+
+<!--            </LinearLayout>-->
+<!--            <EditText-->
+<!--                android:lines="5"-->
+<!--                android:textColorHint="#2196F3"-->
+<!--                android:background="@drawable/cssinput"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:padding="10dp"-->
+<!--                android:textSize="17dp"-->
+<!--                android:id="@+id/edtNoidung"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Nội Dung"-->
+<!--                />-->
+<!--            <Button-->
+<!--                android:textAllCaps="false"-->
+<!--                android:background="@drawable/cssbtn"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:textSize="17dp"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:id="@+id/btndangbai"-->
+<!--                android:text="Đăng Bài"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+<!--</ScrollView>-->
+<!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="start"-->
+<!--    app:menu="@menu/bottomnavigation"-->
+<!--    android:layout_width="match_parent"-->
+<!--    >-->
+<!--</com.google.android.material.bottomnavigation.BottomNavigationView>-->
+<!--</androidx.drawerlayout.widget.DrawerLayout>-->
