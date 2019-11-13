@@ -31,7 +31,7 @@ import java.util.UUID;
 import io.opencensus.tags.Tag;
 
 public class DangKyActivity extends AppCompatActivity {
-    private Button btnAcceptRegister;
+    private Button btnAcceptRegister,btnChonAnh;
     private EditText edtHoten,edtUsername,edtSdt,edtPassword,edtDiaChi;
     private RadioButton radNguoiBan,radNguoiMua;
     private ImageView imgAvatar;
@@ -54,8 +54,20 @@ public class DangKyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dang_ky);
         addControls();
         validateRadioGroup();
+        btnChonAnhOnClick();
         imgAvatarOnclick();
         btnRegisterOnclick();
+    }
+
+    private void btnChonAnhOnClick() {
+        btnChonAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickingImage = new Intent(Intent.ACTION_PICK);
+                pickingImage.setType("image/*");
+                startActivityForResult(pickingImage,SELECT_PHOTO);
+            }
+        });
     }
 
     public synchronized void uploadAvatar(){
@@ -88,6 +100,7 @@ public class DangKyActivity extends AppCompatActivity {
                     }
                 }
         );
+
     }
 
     @Override
@@ -158,6 +171,7 @@ public class DangKyActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        btnChonAnh = findViewById(R.id.btnchonanh);
             accountType = "Nguoi Ban";
             btnAcceptRegister = findViewById(R.id.btnAcceptRegister);
             edtHoten = findViewById(R.id.edtHoTen);

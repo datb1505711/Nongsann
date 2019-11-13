@@ -78,7 +78,7 @@ public class BaiDang {
     public BaiDang() {
     }
 
-    public BaiDang(int id, String tenBaiDang, String noiDung, Date ngayLap, String anh, String idUser, String loaisp, String loaiGia, String gia) {
+    public BaiDang(int id, String tenBaiDang, String noiDung, Date ngayLap, String anh, String idUser, String loaisp, String sdt, String diachi, String loaiGia, String loaiBaiDang, String gia) {
         this.id = id;
         this.tenBaiDang = tenBaiDang;
         this.noiDung = noiDung;
@@ -86,7 +86,10 @@ public class BaiDang {
         this.anh = anh;
         this.idUser = idUser;
         this.loaisp = loaisp;
+        this.sdt = sdt;
+        this.diachi = diachi;
         this.loaiGia = loaiGia;
+        this.loaiBaiDang = loaiBaiDang;
         this.gia = gia;
     }
 
@@ -97,6 +100,38 @@ public class BaiDang {
     private String anh;
     private String idUser;
     private String loaisp;
+    private String sdt;
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+
+    private String diachi;
     private String loaiGia;
+    private String loaiBaiDang;
+
+    public String getLoaiBaiDang() {
+        return loaiBaiDang;
+    }
+
+    public void setLoaiBaiDang(String loaiBaiDang) {
+        this.loaiBaiDang = loaiBaiDang;
+    }
+
+
+
     private String gia;
 }
