@@ -1,66 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/container"
     android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TrangChuActivity">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:title="Trang Chu"
+        android:id="@+id/toolbartc"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         />
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerlayout"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <ViewFlipper
-                android:id="@+id/viewflipper"
-                android:layout_height="200dp"
-                android:layout_width="match_parent"
-                >
-                <ImageView
-                    android:scaleType="fitXY"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-            </ViewFlipper>
-            <LinearLayout
-                android:background="#848B94"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-                <TextView
-                    android:paddingLeft="10dp"
-                    android:text="Bài Đăng Mới"
-                    android:textSize="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-                <GridView
-                    android:id="@+id/gridviewtrangchu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:headerLayout="@layout/header"
-            android:layout_gravity="start"
-            app:menu="@menu/navigation"
-            />
-    </androidx.drawerlayout.widget.DrawerLayout>
-</LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/bgBottomNavigation"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/bottomnavigation" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
