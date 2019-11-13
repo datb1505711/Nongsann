@@ -172,8 +172,12 @@ public class BaiDangActivity extends AppCompatActivity {
                 imageURL,
                 sharedPreference.read("username",null),
                 sploai.getSelectedItem().toString(),
+                sharedPreference.read("sdt", null),
+                sharedPreference.read("diachi", null),
                 spdonvitinh.getSelectedItem().toString(),
-                txtgia.getText().toString());
+                sharedPreference.read("account_type", "Nguoi Ban"),
+                txtgia.getText().toString()
+                );
 
         firebaseFirestore.collection("BaiDang").document().set(baiDang).addOnCompleteListener(
                 new OnCompleteListener<Void>() {

@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, BaiDangActivity.class);
+                Intent intent = new Intent(SplashActivity.this, DangKyActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         });
