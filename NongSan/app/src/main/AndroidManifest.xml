@@ -13,8 +13,6 @@
         <activity android:name=".ChitietbaidangActivity" />
         <activity android:name=".BaibaneditActivity" />
         <activity android:name=".BaimuaActivity" />
-        <activity android:name=".BaibanActivity" />
-        <activity android:name=".BaiDangActivity" />
         <activity android:name=".TrangChuActivity" />
         <activity android:name=".DangKyActivity" />
         <activity android:name=".DangNhapActivity" />

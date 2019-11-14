@@ -44,16 +44,16 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class VietbaiFragment extends Fragment {
-    private AsyncTask<?,?,?> asyncTask;
+    private AsyncTask<?, ?, ?> asyncTask;
     private Button btndangbai;
     private ImageView ImageBaiDang;
-    private EditText txtten,txtgia,txtnoidung;
-    private List<String> listDonViTinh ;
-    private List<String> listDanhMuc ;
+    private EditText txtten, txtgia, txtnoidung;
+    private List<String> listDonViTinh;
+    private List<String> listDanhMuc;
     private Uri imagePath;
     private int max;
     private String imageURL;
-    private Spinner sploai,spdonvitinh;
+    private Spinner sploai, spdonvitinh;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageRef = firebaseStorage.getReference();
@@ -76,21 +76,21 @@ public class VietbaiFragment extends Fragment {
         imgAvatarOnclick();
         ButtonClick();
     }
+
     private List<DanhMuc> sort(List<DanhMuc> danhMuc) {
-        for(int i = 0; i<danhMuc.size();i++) {
-            for(int j =0;j<i+1;j++) {
-                if(danhMuc.get(i).id<danhMuc.get(j).id)
-                {
+        for (int i = 0; i < danhMuc.size(); i++) {
+            for (int j = 0; j < i + 1; j++) {
+                if (danhMuc.get(i).id < danhMuc.get(j).id) {
                     DanhMuc temp = danhMuc.get(i);
-                    danhMuc.set(i,danhMuc.get(j));
-                    danhMuc.set(j,temp);
+                    danhMuc.set(i, danhMuc.get(j));
+                    danhMuc.set(j, temp);
                 }
             }
         }
         return danhMuc;
     }
 
-    private void  getMaxId() {
+    private void getMaxId() {
         max = 0;
         firebaseFirestore.collection("BaiDang").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
@@ -103,7 +103,7 @@ public class VietbaiFragment extends Fragment {
                                 BaiDang baidang = snapshot.toObject(BaiDang.class);
                                 if (baidang.getId() > max) max = baidang.getId();
                             }
-                            max = max+1;
+                            max = max + 1;
                             taoBaiDang();
 
 
@@ -122,17 +122,17 @@ public class VietbaiFragment extends Fragment {
                     public void onClick(View view) {
                         Intent pickingImage = new Intent(Intent.ACTION_PICK);
                         pickingImage.setType("image/*");
-                        startActivityForResult(pickingImage,111);
+                        startActivityForResult(pickingImage, 111);
                     }
                 }
         );
     }
 
     @Override
-    public  void onActivityResult(int requestCode, int resultCode,Intent data) {
-        super.onActivityResult(requestCode,resultCode,data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 111 && resultCode==RESULT_OK && data!=null) {
+        if (requestCode == 111 && resultCode == RESULT_OK && data != null) {
             try {
                 imagePath = data.getData();
                 final Uri imageUri = data.getData();
@@ -155,7 +155,7 @@ public class VietbaiFragment extends Fragment {
         });
     }
 
-    public synchronized void uploadImage(){
+    public synchronized void uploadImage() {
         final StorageReference imagesRef = storageRef.child("BaiDang/" + UUID.randomUUID().toString());
         imagesRef.putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -181,7 +181,7 @@ public class VietbaiFragment extends Fragment {
                 txtnoidung.getText().toString(),
                 new Date(),
                 imageURL,
-                sharedPreference.read("username",null),
+                sharedPreference.read("username", null),
                 sploai.getSelectedItem().toString(),
                 sharedPreference.read("sdt", null),
                 sharedPreference.read("diachi", null),
@@ -194,17 +194,16 @@ public class VietbaiFragment extends Fragment {
                 new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             Log.d("create", "create success");
-                        }
-                        else {
+                        } else {
                             Log.d("create", "create fail");
                         }
                     }
                 }
         );
     }
+
     private void LoadData() {
         firebaseFirestore.collection("DanhMuc").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
@@ -214,20 +213,20 @@ public class VietbaiFragment extends Fragment {
 
                         // tao list danh muc ne`
                         List<DanhMuc> danhMucs = new ArrayList<>();
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
                             // lay du lieu tu firebase ve
-                            for(DocumentSnapshot snapshot: documentSnapshots) {
+                            for (DocumentSnapshot snapshot : documentSnapshots) {
                                 DanhMuc danhmuc = snapshot.toObject(DanhMuc.class);
                                 danhMucs.add(danhmuc);
                             }
                             // sap xep lai list danh muc theo id tang dan`.
                             danhMucs = sort(danhMucs);
-                            for(DanhMuc dm: danhMucs) {
+                            for (DanhMuc dm : danhMucs) {
                                 listDanhMuc.add(dm.description);
                             }
                             // set data cho spiner
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,listDanhMuc);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, listDanhMuc);
                             sploai.setAdapter(adapter);
                         }
                     }
@@ -239,27 +238,27 @@ public class VietbaiFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 List<DanhMuc> listTemp = new ArrayList<>();
                 listDonViTinh = new ArrayList<>();
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
 
-                    for(DocumentSnapshot snapshot: documentSnapshots) {
-                        DanhMuc danhmuc = snapshot.toObject(DanhMuc.class) ;
+                    for (DocumentSnapshot snapshot : documentSnapshots) {
+                        DanhMuc danhmuc = snapshot.toObject(DanhMuc.class);
                         listTemp.add(danhmuc);
                     }
                     listTemp = sort(listTemp);
-                    for(DanhMuc dm: listTemp) {
+                    for (DanhMuc dm : listTemp) {
                         listDonViTinh.add(dm.description);
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,listDonViTinh);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, listDonViTinh);
                     spdonvitinh.setAdapter(adapter);
                 }
             }
         });
     }
 
-    private void  AddControl(View view) {
-        sploai = (Spinner)view.findViewById(R.id.SpLoai);
-        spdonvitinh = (Spinner)view.findViewById(R.id.SpDonvitinh);
+    private void AddControl(View view) {
+        sploai = (Spinner) view.findViewById(R.id.SpLoai);
+        spdonvitinh = (Spinner) view.findViewById(R.id.SpDonvitinh);
         btndangbai = (Button) view.findViewById(R.id.btndangbai);
         ImageBaiDang = (ImageView) view.findViewById(R.id.imagebaidang);
         txtten = (EditText) view.findViewById(R.id.edtBaidang);
