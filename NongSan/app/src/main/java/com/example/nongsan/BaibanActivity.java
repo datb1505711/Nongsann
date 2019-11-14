@@ -61,6 +61,6 @@ public class BaibanActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        lvBaiBan = findViewById(R.id.listBaiBan);
+        lvBaiBan = findViewById(R.id.listBaiBan2);
     }
 }

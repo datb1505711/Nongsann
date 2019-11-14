@@ -68,7 +68,7 @@ public class DangNhapActivity extends AppCompatActivity {
                             for (User user : users) {
                                 if (edtUsername.getText().toString().equals(user.getUsername())
                                         && edtPassword.getText().toString().equals(user.getPassword())) {
-                                    Intent intent = new Intent(DangNhapActivity.this, BaibanActivity.class);
+                                    Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
                                     DangNhapActivity.this.startActivity(intent);
                                     if (chkRememberLogin.isChecked()) {
                                         SharedPreference.write("isRememberLogin", true);
