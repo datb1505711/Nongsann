@@ -1,8 +1,9 @@
 package com.example.nongsan;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaiDang {
+public class BaiDang implements Serializable {
     public int getId() {
         return id;
     }
@@ -93,7 +94,7 @@ public class BaiDang {
         this.gia = gia;
     }
 
-    private int id;
+    private  int id;
     private String tenBaiDang;
     private String noiDung;
     private Date ngayLap;
@@ -130,7 +131,6 @@ public class BaiDang {
     public void setLoaiBaiDang(String loaiBaiDang) {
         this.loaiBaiDang = loaiBaiDang;
     }
-
 
 
     private String gia;

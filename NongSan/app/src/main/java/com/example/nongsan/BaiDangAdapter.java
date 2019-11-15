@@ -82,12 +82,14 @@ public class BaiDangAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        BaiDang baiDang = getItem(position);
+        final BaiDang baiDang = getItem(position);
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context,)
+                Intent intent = new Intent(context,ChitietbaidangActivity.class);
+                intent.putExtra("baiDang", baiDang);
+                context.startActivity(intent);
             }
         });
 
