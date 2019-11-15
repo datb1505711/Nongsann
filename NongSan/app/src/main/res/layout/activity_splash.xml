@@ -9,6 +9,12 @@
     android:weightSum="10"
     android:background="@drawable/bglg"
     tools:context=".SplashActivity">
+    <ProgressBar
+        android:layout_gravity="center"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
        <LinearLayout
            android:gravity="center"
            android:layout_weight="6"

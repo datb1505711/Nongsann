@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +27,7 @@ import java.util.List;
 public class DangNhapActivity extends AppCompatActivity {
     private Button btnLogin;
     private CheckBox chkRememberLogin;
+    private ProgressBar progress;
     private EditText edtUsername, edtPassword;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -36,6 +38,7 @@ public class DangNhapActivity extends AppCompatActivity {
         addControls();
         LoadData();
         login();
+        progress.setVisibility(ProgressBar.INVISIBLE);
 
     }
 
@@ -49,11 +52,14 @@ public class DangNhapActivity extends AppCompatActivity {
 
     private void login() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
+
             List<User> users = new ArrayList<User>();
 
 
             @Override
             public void onClick(View view) {
+                progress.setIndeterminate(true);
+                progress.setVisibility(ProgressBar.VISIBLE);
                 firebaseFirestore.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -92,6 +98,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        progress = findViewById(R.id.progress);
         SharedPreference.init(getApplicationContext());
         chkRememberLogin = findViewById(R.id.chkRememberLogin);
         chkRememberLogin.setChecked(SharedPreference.read("isRememberLogin", false));
