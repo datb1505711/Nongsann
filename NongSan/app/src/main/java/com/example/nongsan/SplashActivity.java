@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
             public void onClick(View view) {
                 progress.setIndeterminate(true);
                 progress.setVisibility(ProgressBar.VISIBLE);
-                Intent intent = new Intent(SplashActivity.this, DangNhapActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ChatActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         });
