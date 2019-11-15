@@ -1,6 +1,10 @@
 package com.example.nongsan;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,10 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -34,6 +45,7 @@ public class BaiDangAdapter extends BaseAdapter {
         public TextView noiDung;
         public TextView ngayDang;
         public TextView diaChi;
+        public LinearLayout linearLayout;
     }
 
     @Override
@@ -59,6 +71,7 @@ public class BaiDangAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.dong_baiban, parent, false);
             holder = new ViewHolder();
 
+            holder.linearLayout = convertView.findViewById(R.id.lnBaiDang);
             holder.anhBaiDang = convertView.findViewById(R.id.imageBaiBan);
             holder.tenBaiDang = convertView.findViewById(R.id.txtTenBaiBan);
             holder.noiDung = convertView.findViewById(R.id.txtNoiDung);
@@ -71,7 +84,14 @@ public class BaiDangAdapter extends BaseAdapter {
 
         BaiDang baiDang = getItem(position);
 
-        holder.anhBaiDang.setImageURI(Uri.parse(baiDang.getAnh()));
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(context,)
+            }
+        });
+
+        Picasso.get().load(baiDang.getAnh()).into(holder.anhBaiDang);
         holder.tenBaiDang.setText(baiDang.getTenBaiDang());
         holder.noiDung.setText(baiDang.getNoiDung());
         holder.ngayDang.setText(new Date().toString());

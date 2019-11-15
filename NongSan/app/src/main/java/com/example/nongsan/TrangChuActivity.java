@@ -11,8 +11,13 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class TrangChuActivity extends AppCompatActivity  {
-    Toolbar toolbartc;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TrangChuActivity extends AppCompatActivity {
+    private Toolbar toolbartc;
+    private List<Fragment> fragmentList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +29,17 @@ public class TrangChuActivity extends AppCompatActivity  {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new TrangchuFragment()).commit();
+                    fragmentList.get(0)).commit();
         }
     }
 
     private void Contract() {
         toolbartc = (Toolbar) findViewById(R.id.toolbartc);
+        fragmentList = new ArrayList<>();
+        fragmentList.add(new TrangchuFragment());
+        fragmentList.add(new VietbaiFragment());
+        fragmentList.add(new MessageFragment());
+        fragmentList.add(new TuyChonFragment());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -41,23 +51,19 @@ public class TrangChuActivity extends AppCompatActivity  {
                     switch (item.getItemId()) {
                         case R.id.bttc:
                             toolbartc.setTitle("Trang Chủ");
-                            selectedFragment = new TrangchuFragment();
+                            selectedFragment = fragmentList.get(0);
                             break;
                         case R.id.btvb:
                             toolbartc.setTitle("Viết Bài");
-                            selectedFragment = new VietbaiFragment();
-                            break;
-                        case R.id.bttb:
-                            toolbartc.setTitle("Thông Báo");
-                            selectedFragment = new ThongbaoFragment();
+                            selectedFragment = fragmentList.get(1);
                             break;
                         case R.id.btmg:
                             toolbartc.setTitle("Chat");
-                            selectedFragment = new MessageFragment();
+                            selectedFragment = fragmentList.get(2);
                             break;
                         case R.id.btlg:
                             toolbartc.setTitle("Tùy chọn");
-                            selectedFragment = new TuyChonFragment();
+                            selectedFragment = fragmentList.get(3);
                             break;
                     }
 

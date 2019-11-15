@@ -29,6 +29,7 @@
             >
             <ImageView
                 android:scaleType="fitXY"
+                android:id="@+id/imageChiTietBaiDang"
                 android:src="@drawable/background"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                 <TextView
                     android:drawableLeft="@drawable/loai"
                     android:paddingLeft="2dp"
+                    android:id="@+id/txtChiTietTenBaiDang"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="20dp"
@@ -53,6 +55,7 @@
                 <TextView
                     android:drawableLeft="@drawable/date"
                     android:paddingLeft="2dp"
+                    android:id="@+id/txtChiTietNgayDang"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
@@ -75,6 +78,7 @@
                     <TextView
                         android:drawableLeft="@drawable/city"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtChiTietTinhThanh"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -86,6 +90,7 @@
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
+                        android:id="@+id/txtChiTietSdt"
                         android:textSize="18dp"
                         android:text="So dien thoai"
                         android:layout_width="match_parent"
@@ -93,6 +98,7 @@
                     <TextView
                         android:drawableLeft="@drawable/date"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtNgayDangChiTiet"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -109,6 +115,7 @@
                     <TextView
                         android:drawableLeft="@drawable/loai"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtLoaiSanPhamChiTiet"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -118,6 +125,7 @@
                     <TextView
                         android:drawableLeft="@drawable/loai"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtKhoiLuongChiTiet"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -127,6 +135,7 @@
                     <TextView
                         android:drawableLeft="@drawable/msg"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtChat"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -145,6 +154,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
+                    android:id="@+id/txtMoTaChiTiet"
                     android:text="Mo ta"
                     android:layout_width="match_parent"
                     />
