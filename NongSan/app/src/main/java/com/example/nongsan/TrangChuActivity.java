@@ -56,7 +56,8 @@ public class TrangChuActivity extends AppCompatActivity  {
                             selectedFragment = new MessageFragment();
                             break;
                         case R.id.btlg:
-                            Toast.makeText(TrangChuActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                            toolbartc.setTitle("Tùy chọn");
+                            selectedFragment = new TuyChonFragment();
                             break;
                     }
 
