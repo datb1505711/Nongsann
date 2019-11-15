@@ -36,6 +36,31 @@
 
             </ImageView>
             <LinearLayout
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:drawableLeft="@drawable/loai"
+                    android:paddingLeft="2dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"
+                    android:text="Ten bai dang"
+                    android:layout_width="match_parent"
+                    />
+                <TextView
+                    android:drawableLeft="@drawable/date"
+                    android:paddingLeft="2dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Ngay dang"
+                    android:layout_width="match_parent"
+                    />
+            </LinearLayout>
+            <LinearLayout
                 android:weightSum="10"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -48,6 +73,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
+                        android:drawableLeft="@drawable/city"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
@@ -56,6 +82,7 @@
                         android:layout_width="match_parent"
                         />
                     <TextView
+                        android:drawableLeft="@drawable/call"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
@@ -64,6 +91,7 @@
                         android:layout_width="match_parent"
                         />
                     <TextView
+                        android:drawableLeft="@drawable/date"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
@@ -79,6 +107,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
+                        android:drawableLeft="@drawable/loai"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
@@ -87,11 +116,21 @@
                         android:layout_width="match_parent"
                         />
                     <TextView
+                        android:drawableLeft="@drawable/loai"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
                         android:text="Khoi luong"
+                        android:layout_width="match_parent"
+                        />
+                    <TextView
+                        android:drawableLeft="@drawable/msg"
+                        android:paddingLeft="2dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="18dp"
+                        android:text="Chat"
                         android:layout_width="match_parent"
                         />
                 </LinearLayout>
