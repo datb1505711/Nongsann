@@ -2,6 +2,7 @@ package com.example.nongsan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ public class ChitietbaidangActivity extends AppCompatActivity {
     }
 
     private void addData() {
-        BaiDang baiDang = (BaiDang) getIntent().getSerializableExtra("baiDang");
+        final BaiDang baiDang = (BaiDang) getIntent().getSerializableExtra("baiDang");
 
         txtTen.setText(baiDang.getTenBaiDang());
         txtMoTa.setText(baiDang.getNoiDung());
@@ -37,7 +38,9 @@ public class ChitietbaidangActivity extends AppCompatActivity {
         txtChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent intent = new Intent(ChitietbaidangActivity.this,ChatActivity.class);
+                intent.putExtra("chatWith",baiDang.getIdUser());
+                startActivity(intent);
             }
         });
     }

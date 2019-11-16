@@ -19,9 +19,40 @@
             android:text="Chat"
             android:textSize="23sp" />
     </androidx.appcompat.widget.Toolbar>
-    <ListView
-        android:background="@android:color/white"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/lvChat"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtChat"
+                android:textSize="23sp"
+                android:hint="enter your message"
+                />
+            <ImageButton
+                android:layout_weight="0"
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_menu_send"
+                android:background="#FFFFFF"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

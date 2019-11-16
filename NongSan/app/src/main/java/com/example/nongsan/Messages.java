@@ -3,6 +3,22 @@ package com.example.nongsan;
 import java.util.Date;
 
 public class Messages {
+    private String imageURL;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public Messages(String imageURL, Date createAt, String messages, String chatWith) {
+        this.imageURL = imageURL;
+        this.createAt = createAt;
+        this.messages = messages;
+        this.chatWith = chatWith;
+    }
 
     private Date createAt;
     private String messages;

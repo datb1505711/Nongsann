@@ -12,6 +12,7 @@
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:src="@drawable/image"
+            android:id="@+id/imageAvatarChat"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             />
@@ -24,6 +25,7 @@
         >
         <TextView
             android:text="Binh luan"
+            android:id="@+id/txtBinhLuan"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:layout_width="match_parent"
@@ -32,6 +34,7 @@
         <TextView
             android:text="12-12-2019"
             android:textSize="16sp"
+            android:id="@+id/txtNgayTaoBinhLuan"
             android:textColor="@android:color/black"
             android:drawableLeft="@drawable/date"
             android:layout_width="match_parent"
