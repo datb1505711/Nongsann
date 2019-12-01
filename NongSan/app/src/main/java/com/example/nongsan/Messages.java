@@ -13,13 +13,25 @@ public class Messages {
         this.imageURL = imageURL;
     }
 
-    public Messages(String imageURL, Date createAt, String messages, String chatWith) {
+
+
+    public Messages(String imageURL, String username, Date createAt, String messages, String chatWith) {
         this.imageURL = imageURL;
+        this.username = username;
         this.createAt = createAt;
         this.messages = messages;
         this.chatWith = chatWith;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String username;
     private Date createAt;
     private String messages;
     private String chatWith;
@@ -51,9 +63,5 @@ public class Messages {
     public Messages() {
     }
 
-    public Messages(Date createAt, String messages, String chatWith) {
-        this.createAt = createAt;
-        this.messages = messages;
-        this.chatWith = chatWith;
-    }
+
 }

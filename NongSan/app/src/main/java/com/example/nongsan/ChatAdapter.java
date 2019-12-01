@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,12 +35,12 @@ public class ChatAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return listdata.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return listdata.get(i);
     }
 
     @Override
@@ -48,8 +49,7 @@ public class ChatAdapter extends BaseAdapter {
     }
 
     class ViewHolder {
-        ImageView avatar;
-        TextView txtMessages, txtNgayDang;
+        TextView txtMessages, txtNgayDang,txtUsername;
 
     }
 
@@ -62,7 +62,7 @@ public class ChatAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.dong_chat, viewGroup, false);
 
             viewHolder = new ViewHolder();
-            viewHolder.avatar = view.findViewById(R.id.imageAvatarChat);
+            viewHolder.txtUsername = view.findViewById(R.id.txtusername);
             viewHolder.txtMessages = view.findViewById(R.id.txtBinhLuan);
             viewHolder.txtNgayDang = view.findViewById(R.id.txtNgayTaoBinhLuan);
 
@@ -72,29 +72,11 @@ public class ChatAdapter extends BaseAdapter {
         }
 
         final Messages message = listdata.get(i);
-        FirebaseFirestore.getInstance().collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
-                    List<User> users = new ArrayList<>();
-                    for (DocumentSnapshot documentSnapshot : documentSnapshots) {
-                        User user = documentSnapshot.toObject(User.class);
-                        users.add(user);
-                    }
+        SimpleDateFormat  simpleDateformat = new SimpleDateFormat("EEE hh:MM dd-MM-yyyy"); // the day of the week spelled out completely
 
-                    for (User user : users) {
-                        if (user.getUsername() == message.getChatWith()) {
-                            message.setImageURL(user.getImageUrl());
-                        }
-                    }
-
-                    viewHolder.txtNgayDang.setText(message.getCreateAt().getDate() + "");
-                    viewHolder.txtMessages.setText(message.getMessages());
-                    Picasso.get().load(message.getImageURL()).into(viewHolder.avatar);
-                }
-            }
-        });
+        viewHolder.txtNgayDang.setText(simpleDateformat.format(message.getCreateAt()));
+        viewHolder.txtMessages.setText(message.getMessages());
+        viewHolder.txtUsername.setText(message.getUsername());
 
         return view;
     }

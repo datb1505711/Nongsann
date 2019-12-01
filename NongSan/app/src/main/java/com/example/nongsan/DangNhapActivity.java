@@ -66,7 +66,7 @@ public class DangNhapActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             List<DocumentSnapshot> documentSnapshots = task.getResult().getDocuments();
 
-                            for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
+                            for (DocumentSnapshot documentSnapshot : documentSnapshots) {
                                 User user = documentSnapshot.toObject(User.class);
                                 users.add(user);
                             }
