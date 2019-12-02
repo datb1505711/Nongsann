@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.collect.Lists;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -57,6 +58,7 @@ public class ChatActivity extends AppCompatActivity {
                 FirebaseFirestore.getInstance().collection("Messages").document().set(messages);
 
                 edtChat.setText("");addData();
+
             }
         });
     }
@@ -79,15 +81,31 @@ public class ChatActivity extends AppCompatActivity {
                             messagesList.add(messages);
                         }
                     }
+
+                    sort(messagesList);
                     ChatAdapter adapter = new ChatAdapter(getApplicationContext(), messagesList);
 
                     listViewChat.setAdapter(adapter);
+                    listViewChat.setSelection(listViewChat.getAdapter().getCount()-1);
 
 
                 }
             }
         });
 
+    }
+
+    private List<Messages> sort(List<Messages> messages) {
+        for(int i = 0;i<messages.size();i++) {
+            for(int j =i+1;j<messages.size();j++) {
+                if(messages.get(i).getCreateAt().compareTo(messages.get(j).getCreateAt()) >0) {
+                    Messages temp = messages.get(i);
+                    messages.set(i,messages.get(j));
+                    messages.set(j,temp);
+                }
+            }
+        }
+        return messages;
     }
 
     private void addControls() {
