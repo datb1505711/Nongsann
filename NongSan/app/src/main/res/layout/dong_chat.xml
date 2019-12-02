@@ -37,6 +37,7 @@
             android:id="@+id/txtBinhLuan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:text="Binh luan"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
