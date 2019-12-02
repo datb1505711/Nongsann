@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:weightSum="10">
     <LinearLayout
-        android:padding="5sp"
         android:weightSum="10"
         android:background="@drawable/csschat"
         android:layout_width="match_parent"
@@ -13,15 +12,15 @@
         android:orientation="horizontal">
         <LinearLayout
             android:background="@drawable/user"
-            android:layout_weight="8"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             >
         </LinearLayout>
         <LinearLayout
             android:paddingLeft="5sp"
             android:orientation="vertical"
-            android:layout_weight="4"
+            android:layout_weight="6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -40,7 +39,7 @@
             android:maxLines="2"
             android:text="Binh luan"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/txtNgayTaoBinhLuan"
             android:layout_width="match_parent"
