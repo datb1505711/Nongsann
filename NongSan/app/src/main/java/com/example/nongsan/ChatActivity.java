@@ -83,16 +83,30 @@ public class ChatActivity extends AppCompatActivity {
                         }
                     }
 
-                    messagesList = Lists.reverse(messagesList);
+                    sort(messagesList);
                     ChatAdapter adapter = new ChatAdapter(getApplicationContext(), messagesList);
 
                     listViewChat.setAdapter(adapter);
+                    listViewChat.setSelection(listViewChat.getAdapter().getCount()-1);
 
 
                 }
             }
         });
 
+    }
+
+    private List<Messages> sort(List<Messages> messages) {
+        for(int i = 0;i<messages.size();i++) {
+            for(int j =i+1;j<messages.size();j++) {
+                if(messages.get(i).getCreateAt().compareTo(messages.get(j).getCreateAt()) >0) {
+                    Messages temp = messages.get(i);
+                    messages.set(i,messages.get(j));
+                    messages.set(j,temp);
+                }
+            }
+        }
+        return messages;
     }
 
     private void addControls() {
