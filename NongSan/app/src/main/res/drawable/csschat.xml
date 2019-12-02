@@ -4,8 +4,8 @@
         android:radius="10dp"
         />
     <stroke
-        android:width="2dp"
-        android:color="#2196F3"
+        android:width="3dp"
+        android:color="#959AA0"
         />
     <solid
         android:color="#E6E4E0"

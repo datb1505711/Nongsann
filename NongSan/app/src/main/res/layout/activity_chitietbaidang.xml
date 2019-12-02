@@ -40,8 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:drawableLeft="@drawable/loai"
-                    android:paddingLeft="2dp"
+                    android:padding="3sp"
+                    android:paddingLeft="5dp"
                     android:id="@+id/txtChiTietTenBaiDang"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -61,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:padding="3sp"
                         android:drawableLeft="@drawable/city"
                         android:paddingLeft="2dp"
                         android:id="@+id/txtChiTietTinhThanh"
@@ -71,6 +72,7 @@
                         android:layout_width="match_parent"
                         />
                     <TextView
+                        android:padding="3sp"
                         android:drawableLeft="@drawable/call"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
@@ -88,7 +90,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:layout_marginLeft="50sp"
+                        android:layout_marginRight="20sp"
+                        android:layout_marginLeft="20sp"
                         android:drawableRight="@drawable/msg"
                         android:gravity="center"
                         android:background="@drawable/cssinput"
@@ -96,7 +99,7 @@
                         android:padding="10sp"
                         android:id="@+id/txtChat"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
+                        android:textColor="#323335"
                         android:textSize="20dp"
                         android:text="Chat"
                         android:layout_width="match_parent"
@@ -110,6 +113,7 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:padding="3sp"
                     android:layout_weight="5"
                     android:drawableLeft="@drawable/loai"
                     android:id="@+id/txtLoaiSanPhamChiTiet"
@@ -120,6 +124,7 @@
                     android:layout_width="match_parent"
                     />
                 <TextView
+                    android:padding="3sp"
                     android:layout_weight="5"
                     android:drawableLeft="@drawable/loai"
                     android:id="@+id/txtKhoiLuongChiTiet"
@@ -136,6 +141,7 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:padding="3sp"
                     android:layout_weight="3"
                     android:drawableLeft="@drawable/date"
                     android:id="@+id/txtChiTietNgayDang"
@@ -152,7 +158,7 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
-                    android:gravity="center"
+                    android:padding="3sp"
                     android:lines="10"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
