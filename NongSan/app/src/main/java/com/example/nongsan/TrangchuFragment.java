@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -34,7 +35,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TrangchuFragment extends Fragment {
-
+    private ImageButton imgBtnRefresh;
     private ListView lvBaiBan;
     private EditText edtSeach;
     private ImageButton imgBtn;
@@ -58,6 +59,7 @@ public class TrangchuFragment extends Fragment {
         loadData(view);
         search();
 
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
 
@@ -86,13 +88,22 @@ public class TrangchuFragment extends Fragment {
 
     }
 
-    private void addControls(View view) {
+    private void addControls(final View view) {
         lvBaiBan = view.findViewById(R.id.listBaiBan);
         edtSeach = view.findViewById(R.id.edtsearchhhhhhhhh);
         imgBtn = view.findViewById(R.id.btnSearchhhhhhh);
+        lvBaiBan = view.findViewById(R.id.listBaiBan);
+        imgBtnRefresh = view.findViewById(R.id.btnRefresh);
+
+
+        imgBtnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view2) {
+                loadData(view);
+            }
+        });
     }
     private void loadData(View view) {
-        lvBaiBan = view.findViewById(R.id.listBaiBan);
 
         firebaseFirestore.collection("BaiDang").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
