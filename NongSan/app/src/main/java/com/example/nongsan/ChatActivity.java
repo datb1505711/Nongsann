@@ -80,8 +80,8 @@ public class ChatActivity extends AppCompatActivity {
 
                     for (DocumentSnapshot snapshot : snapshots) {
                         Messages messages = snapshot.toObject(Messages.class);
-                        if (messages.getUsername().equals(SharedPreference.read("username", null))
-                                || messages.getChatWith().equals(SharedPreference.read("username", null))) {
+                        if (messages.getUsername().equals(chatWith)
+                                || messages.getChatWith().equals(chatWith)) {
                             messagesList.add(messages);
                         }
                     }
