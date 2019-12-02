@@ -16,16 +16,35 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarbaiban"
             android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary">
 
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Bài Bán"
-                android:textSize="23sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:foregroundGravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Bài Bán"
+                    android:gravity="center"
+                    android:textSize="23sp" />
+
+                <ImageButton
+                    android:layout_weight="0"
+                    android:id="@+id/btnRefresh"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/refresh"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
         <LinearLayout
             android:layout_width="match_parent"

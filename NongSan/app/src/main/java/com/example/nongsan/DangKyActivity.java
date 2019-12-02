@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -58,6 +59,8 @@ public class DangKyActivity extends AppCompatActivity {
         btnChonAnhOnClick();
         imgAvatarOnclick();
         btnRegisterOnclick();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
 
     private void btnChonAnhOnClick() {
@@ -168,7 +171,18 @@ public class DangKyActivity extends AppCompatActivity {
         firebaseFirestore
                 .collection("Users")
                 .document()
-                .set(user);
+                .set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(getApplicationContext(),DangNhapActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(DangKyActivity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void addControls() {
