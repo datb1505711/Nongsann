@@ -92,6 +92,9 @@ public class DangNhapActivity extends AppCompatActivity {
                                     Log.d("login", "login failed");
                                 }
                             }
+
+                            progress.setVisibility(ProgressBar.INVISIBLE);
+
                         }
                     }
                 });

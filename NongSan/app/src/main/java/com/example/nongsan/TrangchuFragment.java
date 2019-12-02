@@ -99,6 +99,7 @@ public class TrangchuFragment extends Fragment {
         imgBtnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view2) {
+                Log.d("saddsadsa","click");
                 loadData(view);
             }
         });
@@ -115,9 +116,8 @@ public class TrangchuFragment extends Fragment {
 
                     for (DocumentSnapshot snapshot : documentSnapshotList) {
                         BaiDang baiDang = snapshot.toObject(BaiDang.class);
-                        if(baiDang.getLoaiBaiDang().equals("Nguoi Ban")) {
+                        if(baiDang.getLoaiBaiDang().equals(SharedPreference.read("account_type","Nguoi Ban"))) {
                             listBaiBan.add(baiDang);
-
                         }
 
                     }

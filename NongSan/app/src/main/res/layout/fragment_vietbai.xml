@@ -162,6 +162,11 @@
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="17dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+
+                        android:layout_height="30dp"/>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
