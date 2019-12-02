@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="85sp"
-    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:weightSum="10">
-
-
     <LinearLayout
+        android:padding="5sp"
+        android:weightSum="10"
+        android:background="@drawable/csschat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+        <LinearLayout
+            android:background="@drawable/user"
+            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="5sp"
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
         <TextView
             android:id="@+id/txtusername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/user"
             android:text="name"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/txtNgayTaoBinhLuan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/date"
-            android:text="12-12-2019"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
@@ -35,5 +40,14 @@
             android:text="Binh luan"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
+        <TextView
+            android:id="@+id/txtNgayTaoBinhLuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12-12-2019"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

@@ -66,6 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tên Bài Đăng"
+                    android:inputType="text"
                     />
                 <EditText
                     android:textColorHint="#2196F3"
@@ -77,6 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Giá Sản Phẩm"
+                    android:inputType="text"
                     />
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -109,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nội Dung"
+                    android:inputType="text"
                     />
                 <Button
                     android:background="@drawable/cssbutton"

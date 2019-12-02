@@ -56,7 +56,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 FirebaseFirestore.getInstance().collection("Messages").document().set(messages);
 
-                edtChat.setText("");
+                edtChat.setText("");addData();
             }
         });
     }

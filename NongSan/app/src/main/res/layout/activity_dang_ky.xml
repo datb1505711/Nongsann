@@ -68,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nhập Họ Tên"
+                    android:inputType="text"
                     />
                 <EditText
                     android:textColorHint="#2196F3"
@@ -81,6 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nhập tài khoản"
+                    android:inputType="text"
                     />
                 <EditText
                     android:textColorHint="#2196F3"
@@ -108,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nhập Số Điện Thoại"
+                    android:inputType="text"
                     />
                 <EditText
                     android:textColorHint="#2196F3"
@@ -121,6 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nhập Địa Chỉ"
+                    android:inputType="text"
                     />
                 <LinearLayout
                     android:gravity="center"
