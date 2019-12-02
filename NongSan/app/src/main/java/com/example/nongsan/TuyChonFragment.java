@@ -57,7 +57,7 @@ public class TuyChonFragment extends Fragment {
         listString.add("Đăng xuất");
 
         TuyChonAdapter adapter = new TuyChonAdapter(getContext(), listString);
-
+            listTuyChon.setAdapter(adapter);
     }
 
     public void addControls(View view) {

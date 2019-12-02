@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,6 +35,7 @@ import java.util.Map;
 
 public class ChatActivity extends AppCompatActivity {
     private ListView listViewChat;
+    private TextView txtTitle;;
     private List<Messages> messagesList;
     private EditText edtChat;
     private String chatWith;
@@ -68,7 +70,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void addData() {
         chatWith = getIntent().getStringExtra("chatWith");
-
+        txtTitle.setText(chatWith);
         FirebaseFirestore.getInstance().collection("Messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -113,5 +115,6 @@ public class ChatActivity extends AppCompatActivity {
         listViewChat = findViewById(R.id.lvChat);
         edtChat = findViewById(R.id.edtChat);
         btnSend = findViewById(R.id.btnSend);
+        txtTitle = findViewById(R.id.txtTitle);
     }
 }
