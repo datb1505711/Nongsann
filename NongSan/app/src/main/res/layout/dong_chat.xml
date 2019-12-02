@@ -6,6 +6,7 @@
     android:weightSum="10">
     <LinearLayout
         android:padding="5sp"
+        android:id="@+id/lnChat"
         android:weightSum="10"
         android:background="@drawable/csschat"
         android:layout_width="match_parent"

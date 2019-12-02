@@ -1,11 +1,13 @@
 package com.example.nongsan;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,7 +52,7 @@ public class ChatAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView txtMessages, txtNgayDang,txtUsername;
-
+        LinearLayout lnChat;
     }
 
     @Override
@@ -65,7 +67,7 @@ public class ChatAdapter extends BaseAdapter {
             viewHolder.txtUsername = view.findViewById(R.id.txtusername);
             viewHolder.txtMessages = view.findViewById(R.id.txtBinhLuan);
             viewHolder.txtNgayDang = view.findViewById(R.id.txtNgayTaoBinhLuan);
-
+            viewHolder.lnChat = view.findViewById(R.id.lnChat);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -73,7 +75,6 @@ public class ChatAdapter extends BaseAdapter {
 
         final Messages message = listdata.get(i);
         SimpleDateFormat  simpleDateformat = new SimpleDateFormat("EEE hh:MM dd-MM-yyyy"); // the day of the week spelled out completely
-
         viewHolder.txtNgayDang.setText(simpleDateformat.format(message.getCreateAt()));
         viewHolder.txtMessages.setText(message.getMessages());
         viewHolder.txtUsername.setText(message.getUsername());
