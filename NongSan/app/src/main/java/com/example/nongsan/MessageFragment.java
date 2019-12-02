@@ -51,48 +51,28 @@ public class MessageFragment extends Fragment {
     private void loadData(View view) {
         listView = view.findViewById(R.id.lvChatttttt);
 
-        FirebaseFirestore.getInstance().collection("Messages").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+        FirebaseFirestore.getInstance().collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                messages = new ArrayList<>();
-                users = new ArrayList<>();
-                usernames = new ArrayList<>();
-
                 if (task.isSuccessful()) {
+
+                    messages = new ArrayList<>();
+                    users = new ArrayList<>();
+                    usernames = new ArrayList<>();
                     List<DocumentSnapshot> documentSnapshotList = task.getResult().getDocuments();
 
                     for (DocumentSnapshot snapshot : documentSnapshotList) {
-                        Messages messages = snapshot.toObject(Messages.class);
-                        if (messages.getUsername().equals(SharedPreference.read("username", null))
-                                || messages.getChatWith().equals(SharedPreference.read("username", null))) {
-                            if (!usernames.contains(messages.getUsername())) {
-                                usernames.add(messages.getUsername());
-                            }
-                        }
+                        User user = snapshot.toObject(User.class);
+                        if(!user.getUsername().equals(SharedPreference.read("username","")))
+                        users.add(user);
                     }
-
-                    FirebaseFirestore.getInstance().collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()){
-                                List<DocumentSnapshot> documentSnapshotList = task.getResult().getDocuments();
-
-                                for (DocumentSnapshot snapshot : documentSnapshotList) {
-                                    User user = snapshot.toObject(User.class);
-                                    if(usernames.contains(user.getUsername())){
-                                        users.add(user);
-                                    }
-                                }
-                                chat_user_adapter adapter = new chat_user_adapter(getContext(),users);
-                                listView.setAdapter(adapter);
-                            }
-                        }
-                    });
-
+                    chat_user_adapter adapter = new chat_user_adapter(getContext(), users);
+                    listView.setAdapter(adapter);
                 }
-
-
             }
         });
+
+
     }
 }
