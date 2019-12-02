@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.collect.Lists;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -57,6 +58,8 @@ public class ChatActivity extends AppCompatActivity {
                 FirebaseFirestore.getInstance().collection("Messages").document().set(messages);
 
                 edtChat.setText("");
+
+                addData();
             }
         });
     }
@@ -79,6 +82,8 @@ public class ChatActivity extends AppCompatActivity {
                             messagesList.add(messages);
                         }
                     }
+
+                    messagesList = Lists.reverse(messagesList);
                     ChatAdapter adapter = new ChatAdapter(getApplicationContext(), messagesList);
 
                     listViewChat.setAdapter(adapter);
