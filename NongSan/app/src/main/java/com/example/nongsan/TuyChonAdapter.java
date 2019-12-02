@@ -1,6 +1,7 @@
 package com.example.nongsan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,22 @@ public class TuyChonAdapter extends BaseAdapter {
         }
 
         viewHolder.textView.setText(listData.get(i));
+
+        if(listData.get(i).equals("Đăng xuất"))
+            viewHolder.textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,DangNhapActivity.class);
+                    SharedPreference.write("isRememberLogin", false);
+                    SharedPreference.write("username", "");
+                    SharedPreference.write("password","");
+                    SharedPreference.write("hoten", "");
+                    SharedPreference.write("sdt", "");
+                    SharedPreference.write("diachi", "");
+                    SharedPreference.write("account_type", "");
+                    context.startActivity(intent);
+                }
+            });
 
         return view;
     }

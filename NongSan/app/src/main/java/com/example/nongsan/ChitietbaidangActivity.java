@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 public class ChitietbaidangActivity extends AppCompatActivity {
-    private TextView txtTen, txtMoTa, txtNgayDang, txtTinhThanh, txtSDT, txtLoaiSanPham, txtKhoiLuong, txtChat;
+    private TextView txtTen, txtMoTa, txtNgayDang, txtTinhThanh, txtSDT, txtLoaiSanPham, txtKhoiLuong, txtChat, txtNguoiDang;
     private ImageView imageBaiDang;
 
     @Override
@@ -33,6 +33,7 @@ public class ChitietbaidangActivity extends AppCompatActivity {
         txtKhoiLuong.setText(baiDang.getGia());
         txtLoaiSanPham.setText(baiDang.getLoaisp());
         txtSDT.setText(baiDang.getSdt());
+        txtNguoiDang.setText(baiDang.getIdUser());
         Picasso.get().load(baiDang.getAnh()).into(imageBaiDang);
 
         txtChat.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +47,7 @@ public class ChitietbaidangActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        txtNguoiDang = findViewById(R.id.txtNguoiDang);
         txtTen = findViewById(R.id.txtChiTietTenBaiDang);
         txtMoTa = findViewById(R.id.txtMoTaChiTiet);
         txtNgayDang = findViewById(R.id.txtChiTietNgayDang);

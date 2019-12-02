@@ -151,6 +151,18 @@
                     android:text="Ngay dang"
                     android:layout_width="match_parent"
                     />
+                <TextView
+                    android:padding="3sp"
+                    android:layout_weight="3"
+                    android:drawableLeft="@drawable/user"
+                    android:id="@+id/txtNguoiDang"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Nguoi Dang"
+                    android:layout_width="match_parent"
+                    />
+
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
