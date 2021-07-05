@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/bttc"
         android:icon="@drawable/bthome"
         android:title="Trang Chủ" />
     <item
+        android:id="@+id/btvb"
         android:icon="@drawable/btedit"
-        android:title="Bài Bán"
-        />
+        android:title="Viết Bài" />
+
     <item
-        android:icon="@drawable/btrun"
-        android:title="Bài Mua"
-        />
-    <item
+        android:id="@+id/btmg"
         android:icon="@drawable/btmessg"
-        android:title="Tài Khoản"
+        android:title="Chat"
 
         />
     <item
+        android:id="@+id/btlg"
         android:icon="@drawable/btpw"
-        android:title="Đăng Xuất"
-        />
+        android:title="Đăng Xuất" />
 </menu>

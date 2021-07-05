@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:id="@+id/lnBaiDang"
     android:weightSum="10"
     android:layout_height="80sp">
     <LinearLayout
@@ -10,6 +11,7 @@
         android:layout_height="match_parent"
         >
         <ImageView
+            android:id="@+id/imageBaiBan"
             android:scaleType="fitXY"
             android:src="@drawable/anhbd"
             android:layout_width="match_parent"
@@ -26,7 +28,7 @@
             android:padding="2dp"
             android:background="#9C27B0"
             android:textColor="@android:color/white"
-            android:id="@+id/txttenbaiban"
+            android:id="@+id/txtTenBaiBan"
             android:text="Tenbaiban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +41,7 @@
             android:layout_height="wrap_content"
             android:text="Noidung"
             android:textSize="15dp"
-            android:id="@+id/txtnoidung"
+            android:id="@+id/txtNoiDung"
             />
         <LinearLayout
             android:weightSum="10"
@@ -53,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:text="Ngaydang"
                 android:textSize="15dp"
-                android:id="@+id/txtngaydang"
+                android:id="@+id/txtNgayDang"
                 />
             <TextView
                 android:layout_weight="3"
@@ -62,6 +64,7 @@
                 android:layout_height="match_parent"
                 android:text="Diachi"
                 android:textSize="15dp"
+                android:id="@+id/txtDiaChi"
                 />
             <LinearLayout
                 android:orientation="vertical"

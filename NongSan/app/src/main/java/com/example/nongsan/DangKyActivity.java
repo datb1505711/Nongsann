@@ -10,9 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -31,7 +33,7 @@ import java.util.UUID;
 import io.opencensus.tags.Tag;
 
 public class DangKyActivity extends AppCompatActivity {
-    private Button btnAcceptRegister;
+    private Button btnAcceptRegister,btnChonAnh;
     private EditText edtHoten,edtUsername,edtSdt,edtPassword,edtDiaChi;
     private RadioButton radNguoiBan,radNguoiMua;
     private ImageView imgAvatar;
@@ -54,8 +56,22 @@ public class DangKyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dang_ky);
         addControls();
         validateRadioGroup();
+        btnChonAnhOnClick();
         imgAvatarOnclick();
         btnRegisterOnclick();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+    }
+
+    private void btnChonAnhOnClick() {
+        btnChonAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickingImage = new Intent(Intent.ACTION_PICK);
+                pickingImage.setType("image/*");
+                startActivityForResult(pickingImage,SELECT_PHOTO);
+            }
+        });
     }
 
     public synchronized void uploadAvatar(){
@@ -88,6 +104,7 @@ public class DangKyActivity extends AppCompatActivity {
                     }
                 }
         );
+
     }
 
     @Override
@@ -154,10 +171,22 @@ public class DangKyActivity extends AppCompatActivity {
         firebaseFirestore
                 .collection("Users")
                 .document()
-                .set(user);
+                .set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(getApplicationContext(),DangNhapActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(DangKyActivity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void addControls() {
+        btnChonAnh = findViewById(R.id.btnchonanh);
             accountType = "Nguoi Ban";
             btnAcceptRegister = findViewById(R.id.btnAcceptRegister);
             edtHoten = findViewById(R.id.edtHoTen);

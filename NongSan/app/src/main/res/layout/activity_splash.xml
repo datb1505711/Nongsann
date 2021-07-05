@@ -7,11 +7,17 @@
     android:orientation="vertical"
     android:id="@+id/drawer"
     android:weightSum="10"
-    android:background="@drawable/bg"
-    tools:context=".MainActivity">
+    android:background="@drawable/bglg"
+    tools:context=".SplashActivity">
+    <ProgressBar
+        android:layout_gravity="center"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
        <LinearLayout
            android:gravity="center"
-           android:layout_weight="6.5"
+           android:layout_weight="6"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:orientation="vertical"
@@ -21,16 +27,25 @@
                android:layout_height="120sp"
                android:layout_width="120sp"
                />
+           <TextView
+               android:layout_marginTop="10sp"
+               android:text="Nông Sản Việt"
+               android:textColor="@android:color/white"
+               android:textSize="20sp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               />
        </LinearLayout>
     <LinearLayout
         android:gravity="center"
-        android:layout_weight="3.5"
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
         <Button
-            android:background="@drawable/cssbtn"
+            android:textAllCaps="false"
+            android:background="@drawable/cssinput"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
@@ -42,8 +57,9 @@
             android:layout_height="wrap_content"
             android:text="Đăng Nhập" />
         <Button
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:background="@drawable/cssbtn"
+            android:background="@drawable/cssinput"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
@@ -53,6 +69,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đăng Ký"
+            />
+        <TextView
+            android:layout_marginTop="10sp"
+            android:text="Tạo Tài Khoản"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
     </LinearLayout>
 </LinearLayout>

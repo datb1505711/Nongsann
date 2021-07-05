@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nongsan">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,16 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditDetailActivity"></activity>
-        <activity android:name=".ChitietbaidangActivity" />
-        <activity android:name=".BaibaneditActivity" />
-        <activity android:name=".BaimuaActivity" />
-        <activity android:name=".BaibanActivity" />
-        <activity android:name=".BaiDangActivity" />
-        <activity android:name=".TrangChuActivity" />
-        <activity android:name=".DangKyActivity" />
-        <activity android:name=".DangNhapActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ChatActivity" android:windowSoftInputMode="adjustPan" ></activity>
+        <activity android:name=".EditDetailActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ChitietbaidangActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".BaibaneditActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".BaimuaActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".TrangChuActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".DangKyActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".DangNhapActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".SplashActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

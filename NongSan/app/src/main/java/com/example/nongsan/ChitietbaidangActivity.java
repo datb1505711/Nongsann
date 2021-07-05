@@ -2,13 +2,60 @@ package com.example.nongsan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class ChitietbaidangActivity extends AppCompatActivity {
+    private TextView txtTen, txtMoTa, txtNgayDang, txtTinhThanh, txtSDT, txtLoaiSanPham, txtKhoiLuong, txtChat, txtNguoiDang;
+    private ImageView imageBaiDang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietbaidang);
+        addControls();
+        addData();
+    }
+
+    private void addData() {
+        final BaiDang baiDang = (BaiDang) getIntent().getSerializableExtra("baiDang");
+
+        txtTen.setText(baiDang.getTenBaiDang());
+        txtMoTa.setText(baiDang.getNoiDung());
+        txtNgayDang.setText(baiDang.getNgayLap().toString());
+        txtTinhThanh.setText(baiDang.getDiachi());
+        txtKhoiLuong.setText(baiDang.getGia());
+        txtLoaiSanPham.setText(baiDang.getLoaisp());
+        txtSDT.setText(baiDang.getSdt());
+        txtNguoiDang.setText(baiDang.getIdUser());
+        Picasso.get().load(baiDang.getAnh()).into(imageBaiDang);
+
+        txtChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChitietbaidangActivity.this,ChatActivity.class);
+                intent.putExtra("chatWith",baiDang.getIdUser());
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void addControls() {
+        txtNguoiDang = findViewById(R.id.txtNguoiDang);
+        txtTen = findViewById(R.id.txtChiTietTenBaiDang);
+        txtMoTa = findViewById(R.id.txtMoTaChiTiet);
+        txtNgayDang = findViewById(R.id.txtChiTietNgayDang);
+        txtTinhThanh = findViewById(R.id.txtChiTietTinhThanh);
+        txtSDT = findViewById(R.id.txtChiTietSdt);
+        txtLoaiSanPham = findViewById(R.id.txtLoaiSanPhamChiTiet);
+        txtKhoiLuong = findViewById(R.id.txtKhoiLuongChiTiet);
+        txtChat = findViewById(R.id.txtChat);
+        imageBaiDang  =findViewById(R.id.imageChiTietBaiDang);
     }
 }

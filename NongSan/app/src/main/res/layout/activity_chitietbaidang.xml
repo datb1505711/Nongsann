@@ -29,26 +29,42 @@
             >
             <ImageView
                 android:scaleType="fitXY"
+                android:id="@+id/imageChiTietBaiDang"
                 android:src="@drawable/background"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
-                >
+                />
 
-            </ImageView>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:padding="3sp"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/txtChiTietTenBaiDang"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"
+                    android:text="Ten bai dang"
+                    android:layout_width="match_parent"
+                    />
+            </LinearLayout>
             <LinearLayout
                 android:weightSum="10"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:layout_weight="5"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
+                    android:layout_weight="4"
                     android:orientation="vertical"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <TextView
+                        android:padding="3sp"
+                        android:drawableLeft="@drawable/city"
                         android:paddingLeft="2dp"
+                        android:id="@+id/txtChiTietTinhThanh"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textSize="18dp"
@@ -56,45 +72,68 @@
                         android:layout_width="match_parent"
                         />
                     <TextView
+                        android:padding="3sp"
+                        android:drawableLeft="@drawable/call"
                         android:paddingLeft="2dp"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
+                        android:id="@+id/txtChiTietSdt"
                         android:textSize="18dp"
                         android:text="So dien thoai"
                         android:layout_width="match_parent"
                         />
-                    <TextView
-                        android:paddingLeft="2dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:textSize="18dp"
-                        android:text="Ngay dang"
-                        android:layout_width="match_parent"
-                        />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_weight="5"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="6"
                     android:orientation="vertical"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <TextView
-                        android:paddingLeft="2dp"
+                        android:layout_marginRight="20sp"
+                        android:layout_marginLeft="20sp"
+                        android:drawableRight="@drawable/msg"
+                        android:gravity="center"
+                        android:background="@drawable/cssinput"
+                        android:textStyle="bold"
+                        android:padding="10sp"
+                        android:id="@+id/txtChat"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:textSize="18dp"
-                        android:text="Loai san pham"
-                        android:layout_width="match_parent"
-                        />
-                    <TextView
-                        android:paddingLeft="2dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:textSize="18dp"
-                        android:text="Khoi luong"
+                        android:textColor="#323335"
+                        android:textSize="20dp"
+                        android:text="Chat"
                         android:layout_width="match_parent"
                         />
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:padding="3sp"
+                    android:layout_weight="5"
+                    android:drawableLeft="@drawable/loai"
+                    android:id="@+id/txtLoaiSanPhamChiTiet"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Loai san pham"
+                    android:layout_width="match_parent"
+                    />
+                <TextView
+                    android:padding="3sp"
+                    android:layout_weight="5"
+                    android:drawableLeft="@drawable/loai"
+                    android:id="@+id/txtKhoiLuongChiTiet"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Khoi luong"
+                    android:layout_width="match_parent"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -102,10 +141,41 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:padding="3sp"
+                    android:layout_weight="3"
+                    android:drawableLeft="@drawable/date"
+                    android:id="@+id/txtChiTietNgayDang"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Ngay dang"
+                    android:layout_width="match_parent"
+                    />
+                <TextView
+                    android:padding="3sp"
+                    android:layout_weight="3"
+                    android:drawableLeft="@drawable/user"
+                    android:id="@+id/txtNguoiDang"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:text="Nguoi Dang"
+                    android:layout_width="match_parent"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:padding="3sp"
                     android:lines="10"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
+                    android:id="@+id/txtMoTaChiTiet"
                     android:text="Mo ta"
                     android:layout_width="match_parent"
                     />

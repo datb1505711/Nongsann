@@ -6,24 +6,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     private Button btnLogin, btnRegister;
+    private ProgressBar progress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_splash);
         addControls();
-
+        progress.setVisibility(ProgressBar.INVISIBLE);
         /// on click button Dang nhap
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
-                MainActivity.this.startActivity(intent);
+                progress.setIndeterminate(true);
+                progress.setVisibility(ProgressBar.VISIBLE);
+                Intent intent = new Intent(SplashActivity.this, DangNhapActivity.class);
+                SplashActivity.this.startActivity(intent);
             }
         });
 
@@ -31,15 +34,17 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BaiDangActivity.class);
-                MainActivity.this.startActivity(intent);
+                progress.setIndeterminate(true);
+                progress.setVisibility(ProgressBar.VISIBLE);
+                Intent intent = new Intent(SplashActivity.this, DangKyActivity.class);
+                SplashActivity.this.startActivity(intent);
             }
         });
-
 
     }
 
     private void addControls() {
+        progress = findViewById(R.id.progress);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
 
